@@ -50,7 +50,7 @@ This project represents the intersection of everything I care about: my family's
 If you're a healthcare professional, ML researcher, or just someone who believes in using technology for good—I'd love to hear your feedback.
 
 **Built with care and to serve people by Bibesh Timalsina**  
-*Software Engineer | Advocate for Health Tech | Biology Enthusiast *
+Software Engineer | Advocate for Health Tech | Biology Enthusiast 
 
 ## License
 MIT License - feel free to use this for learning, research, or building upon.
