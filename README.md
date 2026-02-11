@@ -45,9 +45,11 @@ As a software engineer with a deep fascination for biology, I've always dreamed 
 
 ## Personal Note
 
-This project represents the intersection of everything I care about: my family's health, my love for biology, and my skills as a software engineer. Every line of code is written with the hope that one day, technology like this could help someone keep their sight.
+This project represents the intersection of everything I care about: my family's health, my love for biology, and my skills as a software engineer. Every line of code is written with the hope that one day, technology like this could help someone keep their sight. 
 
-If you're a healthcare professional, ML researcher, or just someone who believes in using technology for good—I'd love to hear your feedback.
+There is a dedicated blog tied to the project if you want to see details of how I am building my project and participate in discussions.
+
+If you're a healthcare professional, ML researcher, or just someone who believes in using technology for good. I would love to hear your feedback.
 
 **Built with care and to serve people by Bibesh Timalsina**  
 Software Engineer | Advocate for Health Tech | Biology Enthusiast 
