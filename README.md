@@ -20,7 +20,7 @@ As a software engineer with a deep fascination for biology, I've always dreamed 
 - **Reduce Healthcare Burden**: Automate initial screening to reserve specialist time for high-risk cases
 - **Democratize Screening**: Enable primary care clinics to perform DR screening without specialized ophthalmologists
 
-## 🏗️ System Architecture
+## System Architecture
 ```
 ┌─────────────┐      ┌──────────────┐      ┌─────────────────┐      ┌──────────────┐
 │    React    │ ───> │   Node.js    │ ───> │ Python FastAPI  │ ───> │  PostgreSQL  │
