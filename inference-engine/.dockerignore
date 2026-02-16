@@ -1,0 +1,18 @@
+# Exclude data to prevent large build context
+data/
+checkpoints/
+
+# Exclude virtual environment and git
+.venv/
+venv/
+.git/
+.gitignore
+.dockerignore
+
+# Exclude compiled python files
+__pycache__/
+*.py[cod]
+
+# Exclude IDE settings
+.vscode/
+.idea/
