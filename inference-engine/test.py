@@ -1,4 +1,3 @@
-# Run this in a Python file or Jupyter cell
 import torch
 
 # Check if Apple MPS (Metal Performance Shaders) is available

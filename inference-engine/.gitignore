@@ -1,0 +1,10 @@
+# Ignore the massive dataset
+inference-engine/data/
+
+# Ignore Python cache and environment
+__pycache__/
+*.py[cod]
+venv/
+
+# Ignore OS-specific files
+.DS_Store
