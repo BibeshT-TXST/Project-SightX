@@ -1,4 +1,5 @@
 # Image pipelines for preprocessing and postprocessing
+import logging
 from torchvision import transforms
 from PIL import Image
 import torch
@@ -22,9 +23,10 @@ train_transforms = transforms.Compose([
 ])
 
 # ----- Training Transforms with no augmentation -----
-# During predection, apply only deterministic steps
+# During Inference Transforms, apply only deterministic steps
 inference_transforms = transforms.Compose([
-    transforms.Resize((224, 224)),  # Resize to a consistent size
+    transforms.Resize(256),  # SCale the shorter edge to 256 pixels
+    transforms.CenterCrop(224),  # Crop the center 224x224 region
     transforms.ToTensor(),  # Convert PIL image to PyTorch tensor
     transforms.Normalize(mean=IMAGENET_MEAN, std=IMAGENET_STD)
 ])
@@ -34,6 +36,11 @@ inference_transforms = transforms.Compose([
 # and returns a tensor ready for inference.
 def preprocess_image(image_path: str) -> torch.Tensor:
     """Load and preprocess a single image for inference."""
-    img = Image.open(image_path).convert('RGB') # Load the image and force it into standard RGB
+    try:
+        img = Image.open(image_path).convert('RGB') # Load the image and force it into standard RGB
+    except Exception as e:
+        logging.error(f"Error loading image {image_path}: {e}")
+        raise e
+        
     tensor = inference_transforms(img)  # Apply the deterministic transforms 
     return tensor.unsqueeze(0) # Add the batch dimension and return
