@@ -22,10 +22,10 @@ train_transforms = transforms.Compose([
     transforms.Normalize(mean=IMAGENET_MEAN, std=IMAGENET_STD)  # Applying ImageNet Stats
 ])
 
-# ----- Training Transforms with no augmentation -----
+# ----- Inference Transforms -----
 # During Inference Transforms, apply only deterministic steps
 inference_transforms = transforms.Compose([
-    transforms.Resize(256),  # SCale the shorter edge to 256 pixels
+    transforms.Resize(256),  # Scale the shorter edge to 256 pixels
     transforms.CenterCrop(224),  # Crop the center 224x224 region
     transforms.ToTensor(),  # Convert PIL image to PyTorch tensor
     transforms.Normalize(mean=IMAGENET_MEAN, std=IMAGENET_STD)
