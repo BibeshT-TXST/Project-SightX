@@ -20,3 +20,11 @@ train_transforms = transforms.Compose([
     transforms.ToTensor(),  # Convert PIL image to PyTorch tensor
     transforms.Normalize(mean=IMAGENET_MEAN, std=IMAGENET_STD)  # Applying ImageNet Stats
 ])
+
+# ----- Training Transforms with no augmentation -----
+# During predection, apply only deterministic steps
+inference_transforms = transforms.Compose([
+    transforms.Resize((224, 224)),  # Resize to a consistent size
+    transforms.ToTensor(),  # Convert PIL image to PyTorch tensor
+    transforms.Normalize(mean=IMAGENET_MEAN, std=IMAGENET_STD)
+])
