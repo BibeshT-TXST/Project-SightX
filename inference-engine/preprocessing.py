@@ -28,3 +28,12 @@ inference_transforms = transforms.Compose([
     transforms.ToTensor(),  # Convert PIL image to PyTorch tensor
     transforms.Normalize(mean=IMAGENET_MEAN, std=IMAGENET_STD)
 ])
+
+# ----- Inference Preprocessing Function -----
+# This function takes an image path, loads the image, applies the necessary transformations, 
+# and returns a tensor ready for inference.
+def preprocess_image(image_path: str) -> torch.Tensor:
+    """Load and preprocess a single image for inference."""
+    img = Image.open(image_path).convert('RGB') # Load the image and force it into standard RGB
+    tensor = inference_transforms(img)  # Apply the deterministic transforms 
+    return tensor.unsqueeze(0) # Add the batch dimension and return
