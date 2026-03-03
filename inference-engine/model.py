@@ -10,3 +10,8 @@ class DRClassifier(nn.Module):
 
         #Load ResNet50 with pre-trained ImageNet weights
         self.backbone = models.resnet50(weights='IMAGENET1K_V1')
+
+        #Freeze backbone layers (preserve learned features)
+        if freeze_backbone:
+            for param in self.backbone.parameters():
+                param.requires_grad = False
