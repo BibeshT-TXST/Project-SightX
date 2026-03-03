@@ -15,3 +15,8 @@ class DRClassifier(nn.Module):
         if freeze_backbone:
             for param in self.backbone.parameters():
                 param.requires_grad = False
+
+        # Unfreeze the final residual block (layer4) for fine-tuning
+        # This allows the model to adapt its deepest features to retinal images
+        for param in self.backbone.layer4.parameters():
+            param.requires_grad = True
