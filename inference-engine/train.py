@@ -22,3 +22,24 @@ LR         = 1e-4
 DEVICE     = torch.device('mps' if torch.backends.mps.is_available() else
              'cuda' if torch.cuda.is_available() else 'cpu')
 print(f"Training on device: {DEVICE}")
+
+# ── DATASET CLASS ─────────────────────────────────────────────────────────────
+class EyePACSDataset(Dataset):
+    def __init__(self, csv_path, img_dir, transform=None):
+        self.df = pd.read_csv(csv_path)
+        self.img_dir = img_dir
+        self.transform = transform
+
+    def __len__(self):
+        return len(self.df)
+
+    def __getitem__(self, idx):
+        row = self.df.iloc[idx]
+        # Build full path to the image file
+        img_path = os.path.join(self.img_dir, row['image'] + '.jpeg')
+        # Always convert to RGB — some retinal images are saved as grayscale
+        image = Image.open(img_path).convert('RGB')
+        label = int(row['level'])
+        if self.transform:
+            image = self.transform(image)
+        return image, label
