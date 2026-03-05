@@ -51,3 +51,15 @@ val_ds   = EyePACSDataset('data/val.csv',   'data/train/', inference_transform)
 # shuffle=True on train so the model doesn't see images in the same order each epoch
 train_dl = DataLoader(train_ds, batch_size=BATCH_SIZE, shuffle=True,  num_workers=4)
 val_dl   = DataLoader(val_ds,   batch_size=BATCH_SIZE, shuffle=False, num_workers=4)
+
+# ── CLASS IMBALANCE HANDLING ──────────────────────────────────────────────────
+# ~73% of images are Grade 0. Without weighting, the model just predicts
+# Grade 0 for everything and still gets 73% accuracy 
+# To prevent this, we compute class weights and use them in the loss function
+labels  = train_ds.df['level'].values           
+classes = np.unique(labels)
+weights = compute_class_weight('balanced', classes=classes, y=labels)
+
+# Move weights to same device as model so loss calculation doesn't crash
+class_weights = torch.FloatTensor(weights).to(DEVICE)  
+criterion = torch.nn.CrossEntropyLoss(weight=class_weights)
